@@ -95,60 +95,117 @@ function Pricing() {
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  md:gap-16 sm:gap-8">
                         {plans.map((plan) => (
-                            <div
-                                key={plan.id}
-                                className={`relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2  ${selectedPlan === plan.id ? "ring-2 ring-amber-500" : ""
-                                    }`}
-                                role="region"
-                                aria-label={`Pricing plan: ${plan.name}`}
-                            >
+                            // <div
+                            //     key={plan.id}
+                            //     className={`relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2  ${selectedPlan === plan.id ? "ring-2 ring-amber-500" : ""
+                            //         }`}
+                            //     role="region"
+                            //     aria-label={`Pricing plan: ${plan.name}`}
+                            // >
                               
                         
 
-                                {/* Card Header */}
-                                <div className=" p-6">
-                                    <h3 className="text-xl md:text-3xl font-bold text-[#BA927C] mb-2 text-center">{plan.name}</h3>
-                                    <p className="text-gray-600 text-center text-sm sm:text-base mb-6">{plan.subtitle}</p>
-                                </div>
+                            //     {/* Card Header */}
+                            //     <div className=" p-6">
+                            //         <h3 className="text-xl md:text-3xl font-bold text-[#BA927C] mb-2 text-center">{plan.name}</h3>
+                            //         <p className="text-gray-600 text-center text-sm sm:text-base mb-6">{plan.subtitle}</p>
+                            //     </div>
 
-                                {/* Price Section */}
-                                <div className="px-6 sm:px-8 pb-6 ">
-                                    <div
-                                        className=""
-                                    >
-                                        <div className="w-50 absolute z-100 mb-[100px]">
-                                            <div className="text-3xl m:text-3xl font-bold  text mb-2">{plan.price}</div>
-                                            {plan.isLifetime && (
-                                                <div className="text text-sm ">{plan.lifetimeText}</div>
-                                            )}
-                                        </div>
-                                        <img src="../../../public/img/Banner/pricingImage.png" className=' absolute left-[-40px] z-50 top-32' alt="" />
-                                    </div>
-                                </div>
+                            //     {/* Price Section */}
+                            //     <div className="px-6 sm:px-8 pb-6 ">
+                            //         <div
+                            //             className=""
+                            //         >
+                            //             <div className="w-50 absolute z-100 mb-[100px]">
+                            //                 <div className="text-3xl m:text-3xl font-bold  text mb-2">{plan.price}</div>
+                            //                 {plan.isLifetime && (
+                            //                     <div className="text text-sm ">{plan.lifetimeText}</div>
+                            //                 )}
+                            //             </div>
+                            //             <img src="../../../public/img/Banner/pricingImage.png" className=' absolute left-[-40px] z-50 top-32' alt="" />
+                            //         </div>
+                            //     </div>
 
-                                {/* Features List */}
-                                <div className="px-6 sm:px-8 pb-8 mt-24">
-                                    <ul className="space-y-3 mb-8">
-                                        {plan.features.map((feature, featureIndex) => (
-                                            <li key={featureIndex} className="flex items-center">
-                                                <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#BA927C] flex items-center justify-center mr-3">
-                                                    <Check className="w-3 h-3 text-gray-300" />
-                                                </div>
-                                                <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                            //     {/* Features List */}
+                            //     <div className="px-6 sm:px-8 pb-8 mt-24">
+                            //         <ul className="space-y-3 mb-8">
+                            //             {plan.features.map((feature, featureIndex) => (
+                            //                 <li key={featureIndex} className="flex items-center">
+                            //                     <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#BA927C] flex items-center justify-center mr-3">
+                            //                         <Check className="w-3 h-3 text-gray-300" />
+                            //                     </div>
+                            //                     <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
+                            //                 </li>
+                            //             ))}
+                            //         </ul>
 
-                                    {/* CTA Button */}
-                                    <button
-                                        onClick={() => handleGetStarted(plan)}
-                                        className="button flex gap-2 items-center justify-center "
-                                    >
-                                        <span>{plan.buttonText}</span>
-                                        <ArrowRight className="w-4 h-4" />
-                                    </button>
-                                </div>
-                            </div>
+                            //         {/* CTA Button */}
+                            //         <button
+                            //             onClick={() => handleGetStarted(plan)}
+                            //             className="button flex gap-2 items-center justify-center "
+                            //         >
+                            //             <span>{plan.buttonText}</span>
+                            //             <ArrowRight className="w-4 h-4" />
+                            //         </button>
+                            //     </div>
+                            // </div>
+
+                            <div
+  key={plan.id}
+  className={`
+    relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl 
+    hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 
+    ${selectedPlan === plan.id ? "ring-2 ring-amber-500" : ""}
+    flex flex-col
+  `}
+  role="region"
+  aria-label={`Pricing plan: ${plan.name}`}
+>
+  {/* Card Header */}
+  <div className="p-6">
+    <h3 className="text-xl md:text-3xl font-bold text-[#BA927C] mb-2 text-center">{plan.name}</h3>
+    <p className="text-gray-600 text-center text-sm sm:text-base mb-6">{plan.subtitle}</p>
+  </div>
+
+  {/* Price Section */}
+  <div className="px-6 sm:px-8 pb-6 relative">
+    <div className="absolute z-10 w-50">
+      <div className="text-3xl font-bold text mb-2">{plan.price}</div>
+      {plan.isLifetime && (
+        <div className="text text-sm">{plan.lifetimeText}</div>
+      )}
+    </div>
+    <img
+      src="../../../public/img/Banner/pricingImage.png"
+      className="absolute left-[-40px] z-0 top-[-14px]"
+      alt=""
+    />
+  </div>
+
+  {/* Features List */}
+  <div className="px-6 sm:px-8 pb-8 mt-24 flex-1 flex flex-col">
+    <ul className="space-y-3 mb-8">
+      {plan.features.map((feature, featureIndex) => (
+        <li key={featureIndex} className="flex items-center">
+          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#BA927C] flex items-center justify-center mr-3">
+            <Check className="w-3 h-3 text-gray-300" />
+          </div>
+          <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
+        </li>
+      ))}
+    </ul>
+
+    {/* CTA Button (fixed to bottom) */}
+    <button
+      onClick={() => handleGetStarted(plan)}
+      className="button flex gap-2 items-center justify-center mt-auto"
+    >
+      <span>{plan.buttonText}</span>
+      <ArrowRight className="w-4 h-4" />
+    </button>
+  </div>
+</div>
+
                         ))}
                     </div>
                 )}

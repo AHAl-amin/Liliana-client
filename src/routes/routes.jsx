@@ -8,6 +8,9 @@ import EmailVerification from "../Pages/Authentication/EmailVerification";
 import OTP_Verification from "../Pages/Authentication/OTP_Verification";
 import ResetPassword from "../Pages/Authentication/ResetPassword";
 import Admin_Home from "../Layout/Admin/Admin_Home";
+import MayMemorials from "../Pages/MayMemorials/MayMemorials";
+import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
+// import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
   
 
 export const router = createBrowserRouter([
@@ -15,7 +18,15 @@ export const router = createBrowserRouter([
       path: "/",
       element: <Main />,
         children: [
-          {path: '/', element: <Home/>}
+          {path: '/', element: <Home/>},
+          {
+            path: '/may_memorials',
+             element: <MayMemorials/>
+            },
+          {
+            path: '/create_memorial',
+             element: <CreatMemorial/>
+            },
       ]
     },
 

@@ -94,16 +94,28 @@ const AdvanceFeature = () => {
             <div className="relative w-full  flex items-center justify-center  ">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 w-[60%]  ">
                     {memorialData.map((feature) => (
-                        <div
-                            key={feature.id}
-                            className={`
-                bg-[#E0E6E9] backdrop-blur-sm rounded-3xl p-10 
-                shadow-lg hover:shadow-2xl transition-all duration-300 
-                hover:-translate-y-3 border border-white/20 h-full
-                text-center cursor-pointer 
-                ${expandedCards[feature.id] ? "" : "h-[280px]"}
-              `}
-                        >
+            //             <div
+            //                 key={feature.id}
+            //                 className={`
+            //     bg-[#E0E6E9] backdrop-blur-sm rounded-3xl p-10 
+            //     shadow-lg hover:shadow-2xl transition-all duration-300 
+            //     hover:-translate-y-3 border border-white/20 h-full
+            //     text-center cursor-pointer 
+            //     ${expandedCards[feature.id] ? "" : "h-[280px]"}
+            //   `}
+            //             >
+
+            <div
+  key={feature.id}
+  className={`
+    bg-[#E0E6E9] backdrop-blur-sm rounded-3xl p-8 
+    shadow-lg hover:shadow-2xl transition-all duration-300 
+    hover:-translate-y-2 border border-white/20
+    text-center relative
+    ${expandedCards[feature.id] ? "h-auto" : "h-[320px]"}
+  `}
+>
+
                             {/* Decorative Leaves */}
                             <div className=" absolute  mb-6 h-10 top-5 ">
 
@@ -135,9 +147,9 @@ const AdvanceFeature = () => {
                                     <p className="text-sm leading-relaxed text-gray-700 font-sans ">{feature.detailedDescription}</p>
                                 </div>
                             </div>
-                           <div className='flex justify-center mb-1'>
-                             <img src="../../../public/img/Banner/others.png" className='w-12 h-10 ' alt="" />
-                           </div>
+                            <div className='flex justify-center mb-1'>
+                                <img src="../../../public/img/Banner/others.png" className='w-12 h-10 ' alt="" />
+                            </div>
                             {/* Learn More Button */}
                             <button
                                 onClick={() => toggleCard(feature.id)}
@@ -149,10 +161,10 @@ const AdvanceFeature = () => {
                   py-1 transition-colors duration-200 hover:text-amber-700
                 "
                             >
-                               <div className=''>
-                                 <span className='text-[18px]'>{expandedCards[feature.id] ? "Show Less" : "Learn More"}</span>
-                                {expandedCards[feature.id] ? <ArrowUpIcon className="w-4 h-4 ml-8" /> : <ArrowDownIcon className="w-4 h-4 ml-8" />}
-                               </div>
+                                <div className=''>
+                                    <span className='text-[18px]'>{expandedCards[feature.id] ? "Show Less" : "Learn More"}</span>
+                                    {expandedCards[feature.id] ? <ArrowUpIcon className="w-4 h-4 ml-8" /> : <ArrowDownIcon className="w-4 h-4 ml-8" />}
+                                </div>
                             </button>
                         </div>
                     ))}
