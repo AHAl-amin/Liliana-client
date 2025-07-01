@@ -182,7 +182,8 @@ export default function Basic({ onNext, onBack }) {
             <div className="flex justify-between items-center pt-4">
               <button
                 onClick={onBack}
-                className="px-8 py-2 border text-[#B65B2B]  border-[#B65B2B] cursor-pointer  hover:bg-gray-50 bg-white rounded-md transition-colors duration-200"
+                disabled
+                className="px-8 py-2 border text-[#B65B2B]  border-[#B65B2B] cursor-not-allowed  hover:bg-gray-50 bg-white rounded-md transition-colors duration-200"
               >
                 Back
               </button>

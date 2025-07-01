@@ -1,18 +1,27 @@
 import { useState } from "react"
-import Basic from "../MayMemorials/CreatMemorial/Basic";
-import UploadMedia from "../MayMemorials/CreatMemorial/UploadMedia";
-import Preview from "../MayMemorials/CreatMemorial/Preview";
+
+// import Preview from "../MayMemorials/CreatMemorial/Preview";
+import PersonalInfo from "./PersonalInfo";
+import Beneficiaries from "./Beneficiaries";
+import Assets from "./Assets";
+import Exactor from "./Exactor";
+import SpecialWishes from "./SpecialWishes";
+import Legal from "./Legal";
+import Preview from "./Preview";
 
 
 
 
 const tabs = [
-  { id: "basic", label: "Basic" },
-  { id: "media", label: "Upload Media" },
-  { id: "aiObituary", label: "AI Obituary" },
+  { id: "personalInfo", label: "Personal Info" },
+  { id: "beneficiaries", label: "Beneficiaries" },
+  { id: "assets", label: "Assets" },
+  { id: "exactor", label: "Executor" },
+  { id: "specialWishes", label: "Special Wishes" },
+  { id: "legal", label: "Legal" },
   { id: "preview", label: "Preview" },
+];
 
-]
 
 
 export default function CreateDigital() {
@@ -34,7 +43,7 @@ export default function CreateDigital() {
     }
   };
 
-  const [activeTab, setActiveTab] = useState("basic")
+  const [activeTab, setActiveTab] = useState("personalInfo")
 
 
 
@@ -42,17 +51,23 @@ export default function CreateDigital() {
     const sharedProps = { onNext: handleNext, onBack: handleBack };
 
     switch (activeTab) {
-      case "basic":
-        return <Basic {...sharedProps} />;
-      case "media":
-        return <UploadMedia {...sharedProps} />;
-      case "aiObituary":
-        return <AiObituary {...sharedProps} />;
+      case "personalInfo":
+        return <PersonalInfo {...sharedProps} />;
+      case "beneficiaries":
+        return <Beneficiaries {...sharedProps} />;
+      case "assets":
+        return <Assets {...sharedProps} />;
+      case "exactor":
+        return <Exactor {...sharedProps} />;
+      case "specialWishes":
+        return <SpecialWishes {...sharedProps} />;
+      case "legal":
+        return <Legal {...sharedProps} />;
       case "preview":
         return <Preview {...sharedProps} />;
 
       default:
-        return null;
+        return  null;
     }
   };
 
@@ -60,13 +75,13 @@ export default function CreateDigital() {
     <div className='bg-gradient-to-r from-[#BA927C] to-[#738F9B] py-10 lora'>
       <div className="  md:w-[80%] mx-auto">
         <div className='flex flex-col justify-between items-center'>
-        <h1 className='text1'>Create New Memorial</h1>
-        <p className='text-xl text-gray-200'>Honor and remember your loved one with a digital memorial</p>
+        <h1 className='text1'>Create New Digital wills</h1>
+        <p className='text-xl text-gray-200'>Complete the following steps to create your digital will</p>
       </div>
       <div className="w-full  mx-auto p-10  bg-white rounded-xl my-10">
         <div className="space-y-2 mb-6">
-          <h1 className="text2 text-4xl font-bold">Memorial Creation</h1>
-          <p className="text-gray-500 text-xl">Complete the following steps to create a memorial</p>
+          <h1 className="text2 text-4xl font-bold">Digital Will Creation</h1>
+          <p className="text-gray-500 text-xl">Complete the following steps to create your digital will</p>
         </div>
         <div className="flex flex-wrap gap-1 mb-6 bg-[#BA927D1A] p-2 rounded-lg">
           {tabs.map((tab) => (

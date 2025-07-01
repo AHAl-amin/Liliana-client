@@ -9,8 +9,8 @@ function StartPreserving() {
                     <img src="../../../public/img/Banner/tree.png" className='' alt="" />
                 </div>
                 <div>
-                    <img src="../../../public/img/Banner/StartPreservingBanner.png" className='absolute top-[250px] z-50 ' alt="" />
-                    <div className='z-100 absolute flex flex-col items-center justify-center w-full space-y-4 '>
+                    <img src="../../../public/img/Banner/StartPreservingBanner.png" className='absolute top-[250px] z-30 ' alt="" />
+                    <div className='z-30 absolute flex flex-col items-center justify-center w-full space-y-4 '>
                         <h1 className='text-[#FEF5DB] font-semibold text-3xl'>Start Preserving your Legacy Today</h1>
                         <p className='text md:max-w-2xl text-center'>Join thousands of families who are creating meaningful digital memorials and preserving their legacies for generations to come.</p>
                         <div className='space-x-6'>

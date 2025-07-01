@@ -112,7 +112,7 @@ export default function MayMemorials() {
           <div className="flex items-center border border-[#FEF5DB] rounded-xl px-2 uppercase">
             <button
               onClick={() => setActiveTab("memorial")}
-              className={`px-3 py-2 text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer m-2 rounded-xl ${
+              className={`px-3 py-1 text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer m-2 rounded-xl ${
                 activeTab === "memorial"
                   ? "bg-[#FEF5DB] text-gray-700"
                   : "text-[#FEF5DB]"
@@ -123,7 +123,7 @@ export default function MayMemorials() {
            
             <button
               onClick={() => setActiveTab("digital")}
-              className={`px-3 py-2 text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer rounded-xl ${
+              className={`px-3 py-1 text-sm md:text-base font-semibold transition-all duration-300 cursor-pointer rounded-xl ${
                 activeTab === "digital"
                   ? "bg-[#FEF5DB] text-gray-700"
                   : "text-[#FEF5DB]"
@@ -134,7 +134,7 @@ export default function MayMemorials() {
           
           </div>
 
-          <button className="text-[#FEF5DB] border border-[#FEF5DB] py-1 px-4 rounded-xl cursor-pointer">
+          <button className="text-[#FEF5DB] border border-[#FEF5DB]  px-4 rounded-xl cursor-pointer">
             VIEW ALL
           </button>
         </div>
