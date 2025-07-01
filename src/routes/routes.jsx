@@ -10,6 +10,8 @@ import ResetPassword from "../Pages/Authentication/ResetPassword";
 import Admin_Home from "../Layout/Admin/Admin_Home";
 import MayMemorials from "../Pages/MayMemorials/MayMemorials";
 import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
+// import CreateDigital from "../Pages/CreateDigitalWill/CreateDigital";
+import CreateDigitalWills from "../Pages/CreateDigitalWills/CreateDigitalWills";
 // import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
   
 
@@ -26,6 +28,10 @@ export const router = createBrowserRouter([
           {
             path: '/create_memorial',
              element: <CreatMemorial/>
+            },
+          {
+            path: '/create_digital',
+             element: <CreateDigitalWills/>
             },
       ]
     },

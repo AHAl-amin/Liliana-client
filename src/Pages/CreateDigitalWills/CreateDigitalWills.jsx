@@ -1,9 +1,9 @@
 import { useState } from "react"
+import Basic from "../MayMemorials/CreatMemorial/Basic";
+import UploadMedia from "../MayMemorials/CreatMemorial/UploadMedia";
+import Preview from "../MayMemorials/CreatMemorial/Preview";
 
-import Basic from "./Basic"
-import UploadMedia from "./UploadMedia";
-import AiObituary from "./AiObituary";
-import Preview from "./Preview";
+
 
 
 const tabs = [
@@ -15,7 +15,7 @@ const tabs = [
 ]
 
 
-export default function CreatMemorial() {
+export default function CreateDigital() {
 
 
   const tabIds = tabs.map(tab => tab.id);

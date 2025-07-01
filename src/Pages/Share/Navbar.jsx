@@ -18,21 +18,15 @@ const Navbar = () => {
           >
             Home
           </Link>
-          {/* <div className="relative">
-            <Link to="/may_memorials"
-              className={`text-lg ${location.pathname.includes('may_memorials') ? activeClass : 'text-[#FEF5DB]'}`}
-            >
-             may memorials
-            </Link>
-          
-          </div> */}
+       
 
           
 <Link
   to="/may_memorials"
   className={`text-lg ${
-    location.pathname.startsWith('/may_memorials') ||
-    location.pathname === '/create_memorial'
+    location.pathname.startsWith('/may_memorials')
+    //  ||
+    // location.pathname === '/create_memorial'
       ? activeClass
       : 'text-[#FEF5DB]'
   }`}
@@ -41,16 +35,16 @@ const Navbar = () => {
 </Link>
         
           <Link
-            to="/seller-plans"
-            className={`text-lg ${location.pathname === '/seller-plans' ? activeClass : 'text-[#FEF5DB]'}`}
+            to="/create_memorial"
+            className={`text-lg ${location.pathname === '/create_memorial' ? activeClass : 'text-[#FEF5DB]'}`}
           >
-            Seller Plans
+           Create Memorial
           </Link>
           <Link
-            to="/cost-calculator"
-            className={`text-lg ${location.pathname === '/cost-calculator' ? activeClass : 'text-[#FEF5DB]'}`}
+            to="/create_digital"
+            className={`text-lg ${location.pathname === '/create_digital' ? activeClass : 'text-[#FEF5DB]'}`}
           >
-            Cost Calculator
+             Create Digital Wills
           </Link>
         </div>
 
