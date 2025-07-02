@@ -3,7 +3,8 @@ import { useState } from "react"
 import Basic from "./Basic"
 import UploadMedia from "./UploadMedia";
 import AiObituary from "./AiObituary";
-import Preview from "./Preview";
+import Preview from "./Preview/Preview";
+
 
 
 const tabs = [

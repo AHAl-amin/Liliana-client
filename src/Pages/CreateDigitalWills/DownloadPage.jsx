@@ -3,9 +3,22 @@
 import { useState } from "react"
 // Optional: For PDF download, install jsPDF: `npm install jspdf`
 import { jsPDF } from "jspdf"
-import { Link } from "react-router-dom"
+import { div } from "framer-motion/client"
+import { CiShare2 } from "react-icons/ci"
+import { MdOutlineFileDownload } from "react-icons/md"
+import { useNavigate } from "react-router-dom"
 
-function Preview({onBack,onNext}) {
+function DownloadPage() {
+
+
+
+const navigate = useNavigate();
+
+const handleBack = () => {
+  navigate("/create_digital?tab=preview"); // or your route path
+};
+
+
   // Mock data for will
   const [willData] = useState({
     personalInfo: {
@@ -82,6 +95,26 @@ function Preview({onBack,onNext}) {
 
 
 
+  const handleDownload = () => {
+    try {
+      const doc = new jsPDF()
+      doc.setFontSize(16)
+      doc.text("Last Will and Testament", 20, 20)
+      doc.setFontSize(12)
+      doc.text(`of ${willData.personalInfo.fullLegalName}`, 20, 30)
+      doc.text(`Personal Info:`, 20, 50)
+      doc.text(`Name: ${willData.personalInfo.fullLegalName}`, 20, 60)
+      doc.text(`Date of Birth: ${willData.personalInfo.dateOfBirth}`, 20, 70)
+      doc.save("will_preview.pdf")
+    } catch (error) {
+      console.error("PDF generation failed:", error)
+      alert("Failed to generate PDF. Please try again.")
+    }
+  }
+
+  const handleEdit = () => {
+    console.log("Navigating to edit mode")
+  }
 
 
 
@@ -89,32 +122,32 @@ function Preview({onBack,onNext}) {
     return <div className="p-6 text-red-600">Error: Will data is missing.</div>
   }
 
+ 
   return (
-    <div className="p-6 lora  ">
+   <div className="bg-gradient-to-r from-[#BA927C] to-[#738F9B] py-10 lora">
+     <div className="p-6 lora md:max-w-[80%] mx-auto bg-white py-10   rounded-xl my-10">
       {/* Action Buttons */}
-      {/* <div className="flex justify-between items-center mb-8 no-print">
-        <h1 className="text-2xl font-semibold text-[#BA927D]">Will Preview</h1>
+      <div className="flex justify-end items-center mb-8 no-print">
+        
         <div className="flex space-x-3">
-          <button
-            onClick={handleEdit}
-            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-          >
-            Edit
-          </button>
-          <button
-            onClick={handlePrint}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            Print
-          </button>
+        
+        
           <button
             onClick={handleDownload}
-            className="px-4 py-2 bg-[#8b4513] text-white rounded-lg hover:bg-[#7a3a0d] transition-colors font-medium"
+            className="px-8 rounded-xl py-2 border text-[#BA927D]  border-[#BA927D]  transition-colors font-medium  cursor-pointer flex items-center gap-2"
           >
+            <MdOutlineFileDownload />
             Download PDF
           </button>
+            <button
+            onClick={handleEdit}
+            className="rounded-xl px-8 py-2 border text-[#BA927D]  border-[#BA927D] cursor-pointer transition-colors font-medium flex items-center gap-2"
+          >
+            <CiShare2 />
+            Share
+          </button>
         </div>
-      </div> */}
+      </div>
 
       {/* Will Document */}
       <div className="">
@@ -358,24 +391,18 @@ function Preview({onBack,onNext}) {
      <div className="flex justify-between items-center pt-10">
                 <button
                     
-onClick={onBack}
+                        onClick={handleBack}
                     className="px-8 py-2 border text-[#BA927D]  border-[#BA927D] cursor-pointer  hover:bg-gray-50 bg-white rounded-md transition-colors duration-200"
                 >
-                    Edit
+                    Back
                 </button>
-              <Link to="/download_page">
-                <button
-                  onClick={onNext}
-                    className="px-8 py-2 bg-[#BA927D] cursor-pointer  text-white rounded-md shadow-sm transition-colors duration-200"
-                >
-                    Save
-                </button>
-              </Link>
+             
             </div>
 
 
     </div>
+   </div>
   )
 }
 
-export default Preview
+export default DownloadPage

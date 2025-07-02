@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-// import Preview from "../MayMemorials/CreatMemorial/Preview";
+
 import PersonalInfo from "./PersonalInfo";
 import Beneficiaries from "./Beneficiaries";
 import Assets from "./Assets";
@@ -8,6 +8,8 @@ import Exactor from "./Exactor";
 import SpecialWishes from "./SpecialWishes";
 import Legal from "./Legal";
 import Preview from "./Preview";
+import { useSearchParams } from "react-router-dom";
+
 
 
 
@@ -24,8 +26,11 @@ const tabs = [
 
 
 
-export default function CreateDigital() {
+export default function CreateDigitalWills() {
 
+  const [searchParams] = useSearchParams();
+const initialTab = searchParams.get("tab") || "personalInfo";
+const [activeTab, setActiveTab] = useState(initialTab);
 
   const tabIds = tabs.map(tab => tab.id);
 
@@ -43,7 +48,7 @@ export default function CreateDigital() {
     }
   };
 
-  const [activeTab, setActiveTab] = useState("personalInfo")
+
 
 
 
@@ -65,6 +70,7 @@ export default function CreateDigital() {
         return <Legal {...sharedProps} />;
       case "preview":
         return <Preview {...sharedProps} />;
+   
 
       default:
         return  null;
@@ -89,8 +95,8 @@ export default function CreateDigital() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 min-w-fit px-4 py-3 rounded-md font-medium transition-all cursor-pointer ${activeTab === tab.id
-                  ? "bg-[#BA927D] font-semibold text-xl text-white shadow-sm"
-                  : "text-[#BA927D] font-semibold text-xl  "
+                  ? "bg-[#BA927D] font-semibold text-xl text-white shadow-sm active-styles"
+                  : "text-[#BA927D] font-semibold text-xl inactive-styles  "
                 }`}
             >
               {tab.label}

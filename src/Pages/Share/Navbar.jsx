@@ -41,8 +41,14 @@ const Navbar = () => {
            Create Memorial
           </Link>
           <Link
-            to="/create_digital"
-            className={`text-lg ${location.pathname === '/create_digital' ? activeClass : 'text-[#FEF5DB]'}`}
+             to="/create_digital"
+  className={`text-lg ${
+    location.pathname.startsWith('/create_digital')
+     ||
+    location.pathname === '/download_page'
+      ? activeClass
+      : 'text-[#FEF5DB]'
+  }`}
           >
              Create Digital Wills
           </Link>

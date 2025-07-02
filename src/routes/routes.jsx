@@ -12,6 +12,7 @@ import MayMemorials from "../Pages/MayMemorials/MayMemorials";
 import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
 // import CreateDigital from "../Pages/CreateDigitalWill/CreateDigital";
 import CreateDigitalWills from "../Pages/CreateDigitalWills/CreateDigitalWills";
+import DownloadPage from "../Pages/CreateDigitalWills/DownloadPage";
 // import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
   
 
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
           {
             path: '/create_digital',
              element: <CreateDigitalWills/>
+            },
+          {
+            path: '/download_page',
+             element: <DownloadPage/>
             },
       ]
     },
