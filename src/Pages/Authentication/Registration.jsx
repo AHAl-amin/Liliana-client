@@ -1,111 +1,185 @@
-import React, { useState } from 'react';
-import { Mail, Lock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Lottie from 'lottie-react';
-import registration from '../../assets/registration.json'
+
+
+
+import { useState } from "react";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
+import { Link, useNavigate } from "react-router-dom";
+// import { useRegisterMutation } from "../../../Redux/feature/authApi";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Registration = () => {
-  const [countryCode, setCountryCode] = useState('+1');
+  const [formData, setFormData] = useState({
 
-  const countryCodes = [
-    { code: '+1', flag: '🇺🇸', name: 'United States' },
-    { code: '+44', flag: '🇬🇧', name: 'United Kingdom' },
-    { code: '+91', flag: '🇮🇳', name: 'India' },
-    { code: '+33', flag: '🇫🇷', name: 'France' },
-    { code: '+61', flag: '🇦🇺', name: 'Australia' },
-  ];
+    username: "",
+    password: "",
+    confirmPassword: "",
+    acceptTerms: false,
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const navigate = useNavigate();
+
+  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { username, password, confirmPassword, acceptTerms } = formData;
+
+    if (!username || !password || !confirmPassword) {
+      toast.error("All fields are required.");
+      return;
+    }
+
+    if (password.trim() !== confirmPassword.trim()) {
+      toast.error("Passwords do not match.");
+      return;
+    }
+
+    if (!acceptTerms) {
+      toast.error("You must accept the terms and conditions.");
+      return;
+    }
+
+
+
+    try {
+
+
+
+      toast.success("Registration successful!");
+
+      localStorage.setItem("userame", username);
+
+      navigate("/login");
+
+    } catch (err) {
+      console.error('Backend Error Response:', err); // Log error response
+      const errorMessage = err?.data?.message || "Registration failed.";
+      const isUserNameExists = /username.*exists/i.test(errorMessage);
+      toast.error(isUserNameExists ? "User already exists." : errorMessage);
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
-      <div className="w-full bg-gray-900 md:w-1/2 h-[30vh] md:h-screen relative">
-      <Lottie
-        animationData={registration} 
-        loop={true} 
-          className="absolute inset-0 w-3/4 h-full mx-auto object-cover"></Lottie>
-        
-       
-      </div>
+    <div className="flex items-center justify-center md:py-36 h-screen bg-gradient-to-r from-[#BA927C] to-[#738F9B] py-10 lora">
+      <div className="bg-white p-8 rounded-lg shadow w-full md:w-1/2 lg:w-1/3">
+        <h2 className="text-4xl font-bold text-center text-[#B18C7B] mb-2">Create Account</h2>
+        <p className="text-center text-gray-500 mb-6 text-xl">
+          Access and preserve cherished memories securely
+        </p>
 
-      <div className="w-full md:w-1/2 min-h-[100vh] md:h-screen relative">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{
-            backgroundImage: "url('https://i.ibb.co.com/cctYrsKY/Group-1686551056.png')",
-          }}
-        ></div>
-
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] md:h-screen p-8">
-          <div className="w-full max-w-xl space-y-8">
-            <div className="text-center">
-              <img
-                src="https://i.ibb.co.com/sp5JLnkF/Whats-App-Image-2025-02-22-at-9-25-22-AM-3.png"
-                alt="Logo"
-                className="mx-auto mb-16 w-3/4"
-              />
-            </div>
-
-            <form className="space-y-6 backdrop-blur-sm bg-white/10 p-10 mb-10 rounded-lg border border-gray-200 shadow-lg">
-              <h2 className="text-3xl font-bold text-[#B28D28] mb-10 text-center">Sign up</h2>
-              <div className="form-control w-full">
-                <div className="relative">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="input input-bordered border-[#B28D2866]/40 w-full pl-10 bg-white/20 text-white placeholder-gray-300"
-                  />
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                </div>
-              </div>
-
-              <div className="form-control w-full">
-                <div className="relative">
-                  <input
-                    type="password"
-                    placeholder="Enter your password"
-                    className="input input-bordered w-full pl-10 bg-white/20 border-[#B28D2866]/40  placeholder-gray-300 text-black"
-                  />
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                </div>
-              </div>
-
-              {/* Replaced "Re-Type your password" with phone number input */}
-              <div className="form-control w-full">
-                <div className="relative flex items-center">
-                  <div className="flex items-center bg-white/20 border-[#B28D2866]/40 border rounded-l-lg h-12 px-3">
-                    <span className="mr-1">
-                      {countryCodes.find((c) => c.code === countryCode)?.flag}
-                    </span>
-                    <select
-                      value={countryCode}
-                      onChange={(e) => setCountryCode(e.target.value)}
-                      className="bg-transparent  focus:outline-none"
-                    >
-                      {countryCodes.map((country) => (
-                        <option key={country.code} value={country.code} className="text-black">
-                          {country.code}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <input
-                    type="tel"
-                    placeholder="Enter phone number"
-                    className="input input-bordered w-full h-12 bg-white/20 border-[#B28D2866]/40 text-black placeholder-gray-300 rounded-l-none border-l-0"
-                  />
-                </div>
-              </div>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
 
-              <button className="btn bg-[#B28D28] text-white rounded-full w-full text-base">Next</button>
+          <input
+            name="Full name"
+            placeholder="Enter your full name"
+            type="text"
+            value={formData.username}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+          />
+          <input
+            name="email"
+            placeholder="Enter your email"
+            type="email"
+            value={formData.username}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+          />
 
-              <p className="text-center text-gray-900">
-                Already have an account?
-                <Link to="/login" className="text-[#8F5E0A] font-semibold ml-1 hover:underline">Login</Link>
-              </p>
-            </form>
+          {/* Password */}
+          <div className="relative">
+            <input
+              name="password"
+              placeholder="Enter password"
+              type={showPassword ? "text" : "password"}
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+            />
+            <span
+              onClick={togglePasswordVisibility}
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+            >
+              {showPassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
+            </span>
           </div>
-        </div>
+
+          {/* Confirm Password */}
+          <div className="relative">
+            <input
+              name="confirmPassword"
+              placeholder="Enter confirm password"
+              type={showConfirmPassword ? "text" : "password"}
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+            />
+            <span
+              onClick={toggleConfirmPasswordVisibility}
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+            >
+              {showConfirmPassword ? <IoEyeOffOutline size={20} /> : <IoEyeOutline size={20} />}
+            </span>
+          </div>
+
+          {/* Terms and Forget */}
+          <div className="flex items-center justify-between">
+            <label className="flex items-center cursor-pointer text-xl text-gray-500">
+              <input
+                name="acceptTerms"
+                type="checkbox"
+                checked={formData.acceptTerms}
+                onChange={handleChange}
+                className="mr-2 mt-[2px] "
+              />
+              Accept all terms & conditions
+            </label>
+
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+
+            className="w-full bg-[#B18C7B] text-white py-3 rounded hover:bg-[#B18C7B]/90 transition cursor-pointer"
+          >
+            Create Account
+          </button>
+
+          <p className="text-center text-xl text-gray-500 ">
+            Don’t have account?{" "}
+            <Link to="/login" className="font-medium text-[#0A3161] underline">
+              Login
+            </Link>
+          </p>
+          <div className="flex items-center w-2/3 mx-auto justify-center my-1">
+            <div className="flex-grow h-px bg-[#d6c1b6]"></div>
+            <span className="mx-4 text-sm text-[#b9988c]">Or continue with</span>
+            <div className="flex-grow h-px bg-[#d6c1b6]"></div>
+          </div>
+          <div className="flex items-center justify-center  gap-6 mx-auto">
+            <FcGoogle className="size-10 cursor-pointer" />
+            <FaFacebookF className=" bg-blue-900 p-2 size-10 rounded-full cursor-pointer" />
+          </div>
+
+
+
+        </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
