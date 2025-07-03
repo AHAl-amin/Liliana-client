@@ -1,8 +1,13 @@
-import React from 'react';
+import React from 'react'
 import { Mail, Lock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const OTP_Verification = () => {
+function Forget_Password_OTP_Verification() {
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/reset_password");
+  }
   return (
     <div className=" h-screen flex justify-center items-center bg-gradient-to-r from-[#BA927C] to-[#738F9B] py-10 lora">
    
@@ -31,6 +36,7 @@ const OTP_Verification = () => {
            
               <button
                 type="submit"
+                onClick={handleClick}
 
                 className="w-full bg-[#B18C7B] text-white py-3 text-lg rounded hover:bg-[#B18C7B]/90 transition cursor-pointer"
               >
@@ -47,7 +53,7 @@ const OTP_Verification = () => {
    
    
        </div>
-  );
+  )
 }
 
-export default OTP_Verification;
+export default Forget_Password_OTP_Verification

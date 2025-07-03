@@ -2,7 +2,7 @@
 
 
 import { useState } from "react";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebook, FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
@@ -86,17 +86,17 @@ const Registration = () => {
             name="Full name"
             placeholder="Enter your full name"
             type="text"
-            value={formData.username}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+            // value={formData.username}
+            // onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none  focus:border-[#B18C7B]"
           />
           <input
             name="email"
             placeholder="Enter your email"
             type="email"
-            value={formData.username}
-            onChange={handleChange}
-            className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+            // value={formData.username}
+            // onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none  focus:border-[#B18C7B]"
           />
 
           {/* Password */}
@@ -107,7 +107,7 @@ const Registration = () => {
               type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+              className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none  focus:border-[#B18C7B]"
             />
             <span
               onClick={togglePasswordVisibility}
@@ -125,7 +125,7 @@ const Registration = () => {
               type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none focus:border-[#0A3161]"
+              className="w-full p-3 border border-gray-300 text-gray-700 rounded focus:outline-none  focus:border-[#B18C7B]"
             />
             <span
               onClick={toggleConfirmPasswordVisibility}
@@ -151,17 +151,19 @@ const Registration = () => {
           </div>
 
           {/* Submit */}
+         <Link to="/otp_verify">
           <button
             type="submit"
 
-            className="w-full bg-[#B18C7B] text-white py-3 rounded hover:bg-[#B18C7B]/90 transition cursor-pointer"
+            className="w-full bg-[#B18C7B] text-white py-3 text-lg rounded hover:bg-[#B18C7B]/90 transition cursor-pointer"
           >
             Create Account
           </button>
+         </Link>
 
           <p className="text-center text-xl text-gray-500 ">
-            Don’t have account?{" "}
-            <Link to="/login" className="font-medium text-[#0A3161] underline">
+                Already have an account?{" "}
+            <Link to="/login" className="font-medium text-[#B18C7B] underline">
               Login
             </Link>
           </p>
@@ -172,7 +174,7 @@ const Registration = () => {
           </div>
           <div className="flex items-center justify-center  gap-6 mx-auto">
             <FcGoogle className="size-10 cursor-pointer" />
-            <FaFacebookF className=" bg-blue-900 p-2 size-10 rounded-full cursor-pointer" />
+            <FaFacebook className=" size-10 rounded-full cursor-pointer text-[#0A66C2]" />
           </div>
 
 

@@ -13,6 +13,7 @@ import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
 // import CreateDigital from "../Pages/CreateDigitalWill/CreateDigital";
 import CreateDigitalWills from "../Pages/CreateDigitalWills/CreateDigitalWills";
 import DownloadPage from "../Pages/CreateDigitalWills/DownloadPage";
+import Forget_Password_OTP_Verification from "../Pages/Authentication/Forget_Password_OTP_Verification";
 // import CreatMemorial from "../Pages/MayMemorials/CreatMemorial/CreatMemorial";
   
 
@@ -52,7 +53,8 @@ export const router = createBrowserRouter([
 
     {path: '/sign_up', element: <Registration/>},
     {path: '/login', element: <Login/>},
-    {path: '/verify', element: <EmailVerification/>},
+    {path: '/email_verify', element: <EmailVerification/>},
     {path: '/otp_verify', element: <OTP_Verification/>},
+    {path: '/forget_password_otp_verify', element: <Forget_Password_OTP_Verification/>},
     {path: '/reset_password', element: <ResetPassword/>},
   ]);
